@@ -1,1 +1,36 @@
-
+#include <stdio.h>
+struct student
+{
+    int roll_no;
+    char name[50];
+    int mark1;
+    int mark2;
+    int mark3;
+    int total;
+    float percentage;
+};
+int main(){
+    int number, i;
+    printf("Enter the number of students: ");
+    scanf("%d", &number);
+    struct student st[number];
+    for(i=0; i<number; i++){
+        printf("Enter student %d's roll number: ", (i+1));
+        scanf("%d", &st[i].roll_no);
+        printf("Enter student %d's name: ", (i+1));
+        scanf(" %49[^\n]", st[i].name);
+        printf("Enter student %d's marks for subject 1: ", (i+1));
+        scanf("%d", &st[i].mark1);
+        printf("Enter student %d's marks for subject 2: ", (i+1));
+        scanf("%d", &st[i].mark2);
+        printf("Enter student %d's marks for subject 3: ", (i+1));
+        scanf("%d", &st[i].mark3);
+        st[i].total = st[i].mark1 + st[i].mark2 + st[i].mark3;
+        st[i].percentage =  ((float)st[i].total/300) * 100; 
+    }
+    printf("Roll no.\tName\t  Subject:1\tSubject:2\tSubject:3\tTotal\tPercentage\n");
+    for (i=0; i<number; i++){
+        printf("%d\t\t%s\t     %d\t    %d\t\t   %d\t\t %d\t   %.2f\n", st[i].roll_no, st[i].name, st[i].mark1, st[i].mark2, st[i].mark3, st[i].total, st[i].percentage);
+    }
+    return 0;
+}
