@@ -1,1 +1,28 @@
-
+#include <stdio.h>
+int main(){
+    int number1, number2, choice;
+    printf("Enter any two numbers:\n");
+    scanf("%d", &number1);
+    scanf("%d", &number2);
+    printf("1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n");
+    printf("Choose which operation you want to do:");
+    scanf("%d", &choice);
+    switch(choice){
+        case 1:
+            printf("Addition of the two numbers = %d\n", number1+number2);
+            break;
+        case 2:
+            printf("Subtraction of the two numbers = %d\n", number1-number2);
+            break;
+        case 3:
+            printf("Multiplication of the two numbers = %d\n", number1*number2);
+            break;
+        case 4:
+            printf("Division of the two number = %f\n", (float)number1/number2);
+            break;
+        default:
+            printf("Choose one of the operations provided.\n");
+            break;
+    }
+    return 0;
+}
