@@ -1,1 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+int main() {
+    FILE *file1, *file2;
+    char message1[100], message2[100];
+    int ch;
+
+    printf("Enter source filename: ");
+    scanf("%99s", message1);
+
+    printf("Enter destination filename: ");
+    scanf("%99s", message2);
+
+    file1 = fopen(message1, "r");
+    if (file1 == NULL) {
+        perror("Error opening source file");
+        return 1;
+    }
+
+    file2 = fopen(message2, "w+");
+    if (file2 == NULL) {
+        perror("Error opening destination file");
+        fclose(file1);
+        return 1;
+    }
+
+    while ((ch = fgetc(file1)) != EOF) {
+        fputc(ch, file2);
+    }
+    fclose(file1);
+
+    printf("File copied successfully.\n");
+
+    rewind(file2);
+
+    while (fscanf(file2, "%99s", message2) != EOF) {
+        printf("%s ", message2);
+    }
+    
+    printf("\n");
+
+    fclose(file2);
+    return 0;
+}
