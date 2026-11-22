@@ -1,1 +1,33 @@
+#include <stdio.h>
 
+int factorial(int number){
+    if (number == 0){
+        return 0;
+    }
+    else if (number == 1){
+        return 1;
+    }
+    else{
+        return (number*factorial(number-1));
+    }
+} 
+
+int main(){
+    int number, answer1, answer2, i;
+    printf("FINDING FACTORIAL USING RECURSIVE METHOD: \n");
+    printf("Enter the number whose factorial you want to find: ");
+    scanf("%d", &number);
+    answer1 = factorial(number);
+    printf("Factorial of %d is %d.\n", number, answer1);
+    printf("\nFINDING FACTORIAL WITHOUT USING RECURSIVE METHOD: \n");
+    printf("Enter the number whose factorial you want to find: ");
+    scanf("%d", &number);
+    i = number-1;
+    answer2 = number;
+    for (i; i>0; i--){
+        answer2 *= i;
+    }
+    printf("Factorial of %d is %d.", number, answer2);
+    
+    return 0;
+}
